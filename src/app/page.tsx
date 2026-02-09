@@ -95,7 +95,7 @@ const faqItems = [
   {
     question: "What is Deep Room AI?",
     answer:
-      "Deep Room AI is a unified, multi-domain, multi-layer knowledge architecture designed for a 10-to-30-year horizon. It connects Human + AI, Social Simulation, Space & Frontier Technologies, Defense & Sovereign AI, and Biological Intelligence into one visionary platform.",
+      "Deep Room AI is a unified, multi-domain, multi-layer knowledge architecture built by a team with 20+ years of software experience. It connects Human + AI, Social Simulation, Space & Frontier Technologies, Defense & Sovereign AI, and Biological Intelligence into one visionary platform.",
   },
   {
     question: "How can I collaborate with Deep Room?",
@@ -173,7 +173,7 @@ export default function HomePage() {
             {[
               { value: "5", label: "Core Layers" },
               { value: "30+", label: "Research Areas" },
-              { value: "10-30", label: "Year Horizon" },
+              { value: "20+", label: "Years Experience" },
               { value: "∞", label: "Possibilities" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
@@ -221,7 +221,7 @@ export default function HomePage() {
               <div className="space-y-4">
                 {[
                   "Multi-domain knowledge integration",
-                  "Long-term strategic planning (10-30 years)",
+                  "20+ years of software expertise",
                   "Open research and collaboration",
                   "Ethical AI development",
                 ].map((item) => (

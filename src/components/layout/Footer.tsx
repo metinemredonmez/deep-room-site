@@ -57,7 +57,7 @@ export default function Footer() {
             </Link>
             <p className="text-gray-400 text-sm mb-4 max-w-sm">
               A unified, multi-domain, multi-layer knowledge architecture
-              designed for a 10-to-30-year horizon.
+              backed by 20+ years of software expertise.
             </p>
             {/* Social Links */}
             <div className="flex gap-4">

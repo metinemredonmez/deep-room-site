@@ -70,7 +70,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Building the future of AI through unified, multi-domain architecture
-            designed for a 10-to-30-year horizon.
+            backed by 20+ years of software expertise.
           </p>
         </div>
 
