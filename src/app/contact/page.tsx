@@ -66,14 +66,31 @@ export default function ContactPage() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    alert("Thank you for your message! We'll get back to you soon.");
-    setFormData({ name: "", email: "", company: "", subject: "", message: "" });
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: 'Thank you for your message! We\'ll get back to you soon.' });
+        setFormData({ name: "", email: "", company: "", subject: "", message: "" });
+      } else {
+        setSubmitStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
+      }
+    } catch {
+      setSubmitStatus({ type: 'error', message: 'Network error. Please try again.' });
+    }
+
     setIsSubmitting(false);
   };
 
@@ -214,6 +231,21 @@ export default function ContactPage() {
                   "Send Message"
                 )}
               </button>
+
+              {submitStatus && (
+                <div className={`p-4 rounded-xl text-center ${
+                  submitStatus.type === 'success'
+                    ? 'bg-green-500/20 border border-green-500/30 text-green-400'
+                    : 'bg-red-500/20 border border-red-500/30 text-red-400'
+                }`}>
+                  {submitStatus.type === 'success' && (
+                    <svg className="w-6 h-6 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  )}
+                  {submitStatus.message}
+                </div>
+              )}
 
               <p className="text-xs text-gray-500 text-center">
                 By submitting this form, you agree to our <Link href="/privacy" className="text-primary hover:underline">Privacy Policy</Link>
