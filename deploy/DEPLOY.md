@@ -1,7 +1,7 @@
 # deeproomai.com — Production Deploy
 
 VPS: `89.252.179.99` (`server.uzmanumre.com`) · nginx 1.24.0 Ubuntu · pm2
-Uygulama yolu: `/var/www/deep` · Port: `3021`
+Uygulama yolu: `/var/www/deep` · Port: `3023`
 
 ---
 
@@ -40,15 +40,18 @@ dig +short deeproomai.com A
 ss -tlnp | grep -E ':30[0-9]{2}' | sort -t: -k2 -n
 ```
 
-`3021` doluysa `ecosystem.config.cjs` ve nginx conf'taki portu birlikte değiştir.
+`3023` doluysa `ecosystem.config.cjs` ve nginx conf'taki portu birlikte değiştir.
 
 ---
 
 ## 2. Kodu çek ve kur
 
+> Repo **private**. HTTPS ile klon çalışmaz (GitHub şifre auth'u kapattı);
+> sunucuda kurulu SSH anahtarı kullanılıyor.
+
 ```bash
 mkdir -p /var/www && cd /var/www
-git clone https://github.com/metinemredonmez/deep-room-site.git deep
+git clone git@github.com:metinemredonmez/deep-room-site.git deep
 cd /var/www/deep
 npm ci --legacy-peer-deps
 ```
@@ -104,7 +107,7 @@ pm2 logs deeproom-web --lines 30
 Lokal test:
 
 ```bash
-curl -I http://127.0.0.1:3021
+curl -I http://127.0.0.1:3023
 ```
 
 `200 OK` gelmeli.

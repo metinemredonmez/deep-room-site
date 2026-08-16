@@ -4,7 +4,7 @@ module.exports = {
       name: "deeproom-web",
       cwd: "/var/www/deep",
       script: "node_modules/next/dist/bin/next",
-      args: "start -p 3021",
+      args: "start -p 3023",
       instances: 1,
       exec_mode: "fork",
       autorestart: true,
@@ -12,7 +12,7 @@ module.exports = {
       max_memory_restart: "512M",
       env: {
         NODE_ENV: "production",
-        PORT: 3021,
+        PORT: 3023,
       },
       error_file: "/var/log/pm2/deeproom-web.error.log",
       out_file: "/var/log/pm2/deeproom-web.out.log",
